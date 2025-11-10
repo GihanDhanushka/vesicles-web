@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>car website</title>
+    <style>
+      body,
+      html {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: white;
+        color: #333;
+        scroll-behavior: smooth;
+      }
+      header {
+        display: flex;
+        position: fixed;
+        align-items: center;
+        justify-content: center;
+        /* display: flex;
+        justify-content: space-between; */
+        /* border-bottom: 1px solid #e0e0e0; */
+        width: 100%;
+        background-color: #ffffff;
+        z-index: 50;
+      }
+
+      .logo-text {
+        /* height: 30px; */
+        font-size: 17px;
+        font-weight: 700;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        /* background-color: #9c96f0; */
+        padding: 0px 20px;
+      }
+      nav a {
+        color: #333;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        /* height: calc(100% - 51px); */
+      }
+
+      .product-image {
+        /* flex: 1; */
+        /* background-color: #f0f0f0; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* overflow: hidden; */
+        position: relative;
+        margin-top: 100px;
+      }
+      .product-image img {
+        max-width: 550px;
+        max-height: auto;
+        object-fit: contain;
+        z-index: 10;
+      }
+      .product-info {
+        flex: 1;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        /* width: ; */
+        align-items: center;
+      }
+      .product-image h1 {
+        font-size: 22em;
+        font-weight: 900;
+        margin: 0;
+        line-height: 1;
+        color: #f0f0f0;
+        position: absolute;
+        top: -100px;
+        z-index: 0;
+      }
+
+      .hero-image {
+        /* flex: 1; */
+        /* background-color: #f0f0f0; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* overflow: hidden; */
+        position: relative;
+        margin-top: 50px;
+      }
+      .hero-image img {
+        max-width: 550px;
+        max-height: auto;
+        object-fit: contain;
+        z-index: 10;
+      }
+      .product-info {
+        flex: 1;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        /* width: ; */
+        align-items: center;
+      }
+      .hero-image h1 {
+        font-size: 15em;
+        font-weight: 900;
+        margin: 0;
+        line-height: 1;
+        color: #f0f0f0;
+        position: absolute;
+        top: 155px;
+        z-index: 0;
+        background: url("/bg1.jpg") no-repeat center center;
+        background-size: cover;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+      }
+      .model-name {
+        font-size: 8em;
+        line-height: 120px;
+        font-weight: bold;
+        color: #000000;
+        margin-top: 20px;
+        /* position: absolute; */
+        z-index: 2;
+      }
+      .specs {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        width: 600px;
+      }
+      .spec-item {
+        text-align: center;
+      }
+      .spec-item h3 {
+        font-size: 1.2em;
+        margin: 0;
+        color: #ff6600;
+      }
+      .spec-item p {
+        font-size: 0.8em;
+        margin: 5px 0 0;
+      }
+      .price {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin: 40px 0;
+      }
+      .price p:first-child {
+        color: #999;
+        font-size: 0.8em;
+        margin: 0;
+      }
+      /* button {
+          background-color: #ff6600;
+          color: white;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1em;
+          font-weight: bold;
+          cursor: pointer;
+          align-self: flex-start;
+      } */
+      .decoration {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 20px;
+        position: absolute;
+        top: 70px;
+        right: 350px;
+        rotate: -30deg;
+      }
+      .decoration div {
+        background-color: #ff6600;
+      }
+      /* .sqr1 {
+        width: 80px;
+        height: 80px;
+      }
+      .sqr2 {
+        width: 60px;
+        height: 60px;
+      }
+      .sqr3 {
+        width: 100px;
+        height: 100px;
+      } */
+      .buttons {
+        font-size: 10px;
+        font-weight: 900;
+        color: #353232;
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .buttons button {
+        border: 2px solid #353232;
+        padding: 5px 20px;
+        border-radius: 20px;
+      }
+      button:hover {
+        border: 2px solid #ff6600;
+        color: #ff6600;
+        background: transparent;
+        cursor: pointer;
+      }
+      .bike-brands {
+        display: flex;
+        position: sticky;
+        top: 50px;
+        align-items: center;
+        justify-content: space-around;
+        font-size: small;
+        font-weight: 700;
+        background: #ffffff;
+      }
+      .brand-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* border: 2px solid #ff6600; */
+        padding: 10px;
+      }
+      /* .bike-brands :hover {
+        scale: 110px;
+        
+      } */
+      .brand-div img {
+        width: 60px;
+      }
+
+      .bike-brands div  :hover {
+        /* border: 2px solid #ff6600; */
+        transform: scale(1.1);
+      }
+      /* .catogery{
+        height: 800px;
+        background-color: #ff6600;
+      } */
+      #detail-section {
+        /* background-color: #999; */
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .div-img {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .div-detail {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+      }
+      .div-detail p {
+        width: 80%;
+        font-weight: 400;
+        font-size: 14px;
+      }
+      #selected-brand {
+        font-size: 30px;
+        font-weight: 700;
+      }
+      .sticky-container {
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <p class="logo-text">AutoVibe</p>
+        <div>
+          <a href="#">Bikes</a>
+          <!-- <a href="#">Cars</a>
+        <a href="#">RACING</a>
+        <a href="#">PARTS & WEAR</a> -->
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="hero-image">
+        <img src="heroImg-new.png" alt="KTM" />
+        <h1>AutoVibe</h1>
+        <!-- <div class="model-name">RC </br> <span id="ktm-model"> 390</span> </div>
+          <div class="decoration">
+              <div class="sqr1"></div>
+              <div class="sqr2"></div>
+              <div class="sqr3"></div>
+          </div> -->
+      </div>
+      <div class="sticky-container">
+        <div class="bike-brands">
+          <div class="brand-div" data-brand="BMW Motorrad">
+            <img src="brand logo/BMW Motorrad.png" alt="logo" />
+            <p>BMW Motorrad</p>
+          </div>
+          <div class="brand-div" data-brand="KTM">
+            <img src="brand logo/KTM.png" alt="logo" />
+            <p>KTM</p>
+          </div>
+          <div class="brand-div" data-brand="Ducati">
+            <img src="brand logo/ducati-simple.png" alt="logo" />
+            <p>Ducati</p>
+          </div>
+          <div class="brand-div" data-brand="Harley-Davidson">
+            <img src="brand logo/Harley-Davidson.png" alt="logo" />
+            <p>Harley-Davidson</p>
+          </div>
+          <div class="brand-div" data-brand="Yamaha">
+            <img src="brand logo/Yamaha.png" alt="logo" />
+            <p>Yamaha</p>
+          </div>
+          <div class="brand-div" data-brand="Honda">
+            <img src="brand logo/Honda.png" alt="logo" />
+            <p>Honda</p>
+          </div>
+          <div class="brand-div" data-brand="Suzuki">
+            <img src="brand logo/Suzuki-simple.png" alt="logo" />
+            <p>Suzuki</p>
+          </div>
+          <div class="brand-div" data-brand="Kawasaki">
+            <img src="brand logo/Kawasak-simple.png" alt="logo" />
+            <p>Kawasaki</p>
+          </div>
+          <div class="brand-div" data-brand="Triumph">
+            <img src="brand logo/Triumph.png" alt="logo" />
+            <p>Triumph</p>
+          </div>
+          <div class="brand-div" data-brand="Aprilia">
+            <img src="brand logo/Aprilia.png" alt="logo" />
+            <p>Aprilia</p>
+          </div>
+          <!-- <div class="brand-div" data-brand="MV Agusta">
+            <img src="/brand logo/BMW Motorrad.png" alt="logo" />
+            <p>MV Agusta</p>
+          </div>
+          <div class="brand-div" data-brand="Royal Enfield">
+            <img src="/brand logo/KTM.png" alt="logo" />
+            <p>Royal Enfield</p>
+          </div> -->
+        </div>
+
+        <div id="detail-section">
+          <div class="div-img">
+            <img
+              id="brand-logo"
+              src="brand logo/BMW Motorrad.png"
+              alt="logo"
+            />
+          </div>
+          <div class="div-detail">
+            <p><span id="selected-brand">BMW Motorrad</span></p>
+            <p id="selected-brand-detail">
+              BMW Motorrad is the motorcycle division of BMW, known for
+              producing premium bikes with advanced technology, performance, and
+              comfort. Their lineup includes adventure, touring, sport, and
+              roadster models, with the BMW GS series being particularly famous
+              for long-distance touring and off-road capabilities. BMW Motorrad
+              combines innovation with luxury for riders seeking high-quality
+              motorcycles.
+            </p>
+            <div id="button" class="buttons">
+              <!-- <a href="/ktm-website-recreation.html">Sport Bikes (Superbikes)</a> -->
+              <button variation="SB">Sport Bikes (Superbikes)</button>
+              <button variation="ADV">Adventure (ADV)</button>
+              <button variation="CS">Cruisers</button>
+              <button variation="SF">Streetfighters</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="product-image">
+        <img id="bike-image" src="/ktm-390-duke.png" alt="KTM" />
+        <h1 id="bike-year">2018</h1>
+        <!-- <div class="model-name" >RC </br> <span id="ktm-model"> 390</span> </div> -->
+        <div class="model-name">
+          <div id="bike-model">RC </br> <span id="bike-model-number"> 390</span></div>
+          <!-- <div id="bike-model-number"><span id="ktm-model"> 390</span></div> -->
+        </div>
+        <div class="decoration">
+          <div class="sqr1"></div>
+          <div class="sqr2"></div>
+          <div class="sqr3"></div>
+        </div>
+      </div>
+      <div class="product-info">
+        <div>
+          <!-- <h1>RC390</h1>
+            <div class="model-name">RC 390</div> -->
+          <div class="specs">
+            <div class="spec-item">
+              <h3><span id="power-val">32</span> kW</h3>
+              <p>Power</p>
+            </div>
+            <div class="spec-item">
+              <h3><span id="displacement-val">373.2</span> cm³</h3>
+              <p>Displacement</p>
+            </div>
+            <div class="spec-item">
+              <h3><span id="speed-val">6</span>-speed</h3>
+              <p>Transmission</p>
+            </div>
+            <div class="spec-item">
+              <h3><span id="weight-val">147</span> kg</h3>
+              <p>Weight</p>
+            </div>
+            <div class="spec-item">
+              <h3><span id="torque-val">35</span> nm</h3>
+              <p>Torque</p>
+            </div>
+          </div>
+        </div>
+        <div id="variant-buttons" class="variant-buttons buttons"></div>
+      </div>
+    </main>
+    <script>
+      const bikeData = [
+        // KTM
+        {
+          brand: "KTM",
+          category: "SB",
+          variants: [
+            {
+              model: "RC 125",
+              year: "2018",
+              image: "ktm-390-duke.png",
+              displacement: "125",
+              speed: "6",
+              weight: "147",
+              torque: "12",
+            },
+            {
+              model: "RC 390",
+              year: "2021",
+              image: "ktm-rc-8c.png",
+              displacement: "373.2",
+              speed: "6",
+              weight: "147",
+              torque: "35",
+            },
+            {
+              model: "RC 8C",
+              year: "2024",
+              image: "ktm-390-duke.png",
+              displacement: "799",
+              speed: "6",
+              weight: "140",
+              torque: "75",
+            },
+          ],
+        },
+        {
+          brand: "KTM",
+          category: "ADV",
+          variants: [
+            {
+              model: "390 Adv",
+              year: "2020",
+              image: "ktm-rc-8c.png",
+              power: "32",
+              displacement: "373.2",
+              speed: "6",
+              weight: "172",
+              torque: "37",
+            },
+            {
+              model: "790 Adv",
+              year: "2012",
+              image: "ktm-390-duke.png",
+              power: "94",
+              displacement: "799",
+              speed: "6",
+              weight: "189",
+              torque: "88",
+            },
+          ],
+        },
+
+        // BMW Motorrad
+        {
+          brand: "BMW Motorrad",
+          category: "SB",
+          variants: [
+            {
+              model: "S1000 RR",
+              year: "2024",
+              image: "ktm-rc-8c.png",
+              displacement: "999",
+              speed: "6",
+              weight: "193",
+              torque: "113",
+            },
+            {
+              model: "M1000 RR",
+              year: "2016",
+              image: "ktm-390-duke.png",
+              displacement: "999",
+              speed: "6",
+              weight: "192",
+              torque: "113",
+            },
+          ],
+        },
+        {
+          brand: "BMW Motorrad",
+          category: "ADV",
+          variants: [
+            {
+              model: "R1250 GS",
+              year: "2017",
+              image: "ktm-rc-8c.png",
+              displacement: "1254",
+              speed: "6",
+              weight: "249",
+              torque: "143",
+            },
+            {
+              model: "F850 GS",
+              year: "2016",
+              image: "ktm-390-duke.png",
+              displacement: "853",
+              speed: "6",
+              weight: "233",
+              torque: "86",
+            },
+          ],
+        },
+
+        // Ducati
+        {
+          brand: "Ducati",
+          category: "SB",
+          variants: [
+            {
+              model: "Panigale V2",
+              year: "2024",
+              image: "ktm-rc-8c.png",
+              power: "155",
+              displacement: "955",
+              speed: "6",
+              weight: "176",
+              torque: "104",
+            },
+            {
+              model: "Panigale V4",
+              year: "2018",
+              image: "ktm-390-duke.png",
+              power: "214",
+              displacement: "1103",
+              speed: "6",
+              weight: "198",
+              torque: "124",
+            },
+          ],
+        },
+        {
+          brand: "Ducati",
+          category: "Streetfighters",
+          variants: [
+            {
+              model: "Streetfighter V2",
+              year: "2016",
+              image: "ktm-rc-8c.png",
+              power: "153",
+              displacement: "955",
+              speed: "6",
+              weight: "178",
+              torque: "101",
+            },
+            {
+              model: "Streetfighter V4",
+              year: "2013",
+              image: "ktm-390-duke.png",
+              power: "208",
+              displacement: "1103",
+              speed: "6",
+              weight: "178",
+              torque: "123",
+            },
+          ],
+        },
+
+        // Harley-Davidson
+        {
+          brand: "Harley-Davidson",
+          category: "Cruisers",
+          variants: [
+            {
+              model: "Sportster S",
+              year: "2010",
+              image: "/ktm-rc-8c.png",
+              power: "121",
+              displacement: "1252",
+              speed: "6",
+              weight: "228",
+              torque: "125",
+            },
+            {
+              model: "Fat Boy",
+              year: "2014",
+              image: "/ktm-390-duke.png",
+              displacement: "1868",
+              speed: "6",
+              weight: "317",
+              torque: "155",
+            },
+          ],
+        },
+
+        // Yamaha
+        {
+          brand: "Yamaha",
+          category: "SB",
+          variants: [
+            {
+              model: "YZF-R1",
+              year: "2024",
+              image: "/ktm-rc-8c.png",
+              displacement: "998",
+              speed: "6",
+              weight: "200",
+              torque: "112",
+            },
+            {
+              model: "YZF-R7",
+              year: "2016",
+              image: "/ktm-390-duke.png",
+              displacement: "689",
+              speed: "6",
+              weight: "188",
+              torque: "67",
+            },
+          ],
+        },
+
+        // Honda
+        {
+          brand: "Honda",
+          category: "SB",
+          variants: [
+            {
+              model: "CBR1000RR-R",
+              year: "2018",
+              image: "/ktm-rc-8c.png",
+              power: "215",
+              displacement: "999",
+              speed: "6",
+              weight: "201",
+              torque: "113",
+            },
+            {
+              model: "CBR600RR",
+              year: "2016",
+              image: "/ktm-390-duke.png",
+              power: "121",
+              displacement: "599",
+              speed: "6",
+              weight: "195",
+              torque: "66",
+            },
+          ],
+        },
+
+        // Kawasaki
+        {
+          brand: "Kawasaki",
+          category: "ADV",
+          variants: [
+            {
+              model: "Versys 1000",
+              year: "2015",
+              image: "/ktm-rc-8c.png",
+              power: "118",
+              displacement: "1043",
+              speed: "6",
+              weight: "253",
+              torque: "102",
+            },
+            {
+              model: "KLR 650",
+              year: "2017",
+              image: "/ktm-390-duke.png",
+              displacement: "652",
+              speed: "5",
+              weight: "210",
+              torque: "54",
+            },
+          ],
+        },
+
+        // Triumph
+        {
+          brand: "Triumph",
+          category: "Cruisers",
+          variants: [
+            {
+              model: "Bonneville Bobber",
+              year: "2024",
+              image: "/ktm-rc-8c.png",
+              power: "78",
+              displacement: "1200",
+              speed: "5",
+              weight: "228",
+              torque: "106",
+            },
+            {
+              model: "Speedmaster",
+              year: "2016",
+              image: "/ktm-390-duke.png",
+              power: "77",
+              displacement: "1200",
+              speed: "5",
+              weight: "245",
+              torque: "106",
+            },
+          ],
+        },
+
+        // Aprilia
+        {
+          brand: "Aprilia",
+          category: "Streetfighters",
+          variants: [
+            {
+              model: "Tuono V4",
+              year: "2024",
+              image: "/ktm-rc-8c.png",
+              power: "175",
+              displacement: "1077",
+              speed: "6",
+              weight: "185",
+              torque: "121",
+            },
+            {
+              model: "Tuono 660",
+              year: "2018",
+              image: "/ktm-390-duke.png",
+              power: "100",
+              displacement: "659",
+              speed: "6",
+              weight: "183",
+              torque: "67",
+            },
+          ],
+        },
+      ];
+
+      document.querySelectorAll(".brand-div").forEach(function (div) {
+        div.addEventListener("click", function () {
+          const selectedBrand = this.getAttribute("data-brand");
+          const selectedBrandDetail = this.getAttribute(
+            "selected-brand-detail"
+          );
+          const logo = document.getElementById("brand-logo");
+          logo.src = `/brand logo/${selectedBrand}.png`;
+          document.getElementById("selected-brand").innerText = selectedBrand;
+          document
+            .getElementById("detail-section")
+            .scrollIntoView({ behavior: "smooth" });
+        });
+      });
+
+      // const imageElement = document.getElementById('ktm-image');
+      // const modelElement = document.getElementById('ktm-model');
+      // const yearElement = document.getElementById('ktm-year');
+
+      // const powerElement = document.getElementById('power-val');
+      // const DisplacementElement = document.getElementById('displacement-val');
+      // const TransmissionElement = document.getElementById('speed-val');
+      // const WeightElement = document.getElementById('weight-val');
+      // const TorqueElement = document.getElementById('torque-val');
+
+      // function updateBikeDetails(selectedName) {
+      //   if (selectedName === "SB_KTM") {
+      //     document.getElementById('ktm-125').addEventListener('click', function() {
+      //     imageElement.src = '/ktm-rc-125.png';
+      //     yearElement.textContent = "2017";
+      //     modelElement.textContent = "125";
+      // });
+      // document.getElementById('ktm-200').addEventListener('click', function() {
+      //     imageElement.src = '/ktm-rc-200.png';
+      //     yearElement.textContent = "2022";
+      //     modelElement.textContent = "200";
+      // });
+
+      // document.getElementById('ktm-390').addEventListener('click', function() {
+      //     imageElement.src = '/ktm-390-duke.png';
+      //     yearElement.textContent = "2018";
+      //     modelElement.textContent = "390";
+      // });
+
+      // document.getElementById('ktm-8c').addEventListener('click', function() {
+      //     imageElement.src = '/ktm-rc-8c.png';
+      //     yearElement.textContent = "2024";
+      //     modelElement.textContent = "8C";
+      // });
+
+      //   } else if (selectedName === "ADV_KTM") {
+      //       imageElement.src = '/bmd-125.png';
+      //       yearElement.textContent = "2024";
+      //       modelElement.textContent = "5";
+      //   } else if(selectedName === "CS_KTM") {
+      //       imageElement.src = '/bmd-125.png';
+      //       yearElement.textContent = "2024";
+      //       modelElement.textContent = "5";
+      //   } else if (selectedName === "SF_KTM") {
+      //       imageElement.src = '/bmd-125.png';
+      //       yearElement.textContent = "2024";
+      //       modelElement.textContent = "5";
+      //   }
+      // }
+
+      function updateBikeDetails(selectedName) {
+        const [category, ...brandParts] = selectedName.split("_");
+        const brand = brandParts.join("_");
+
+        const selectedBike = bikeData.find(
+          (bike) => bike.brand === brand && bike.category === category
+        );
+
+        if (selectedBike) {
+          document.getElementById("bike-image").src = selectedBike.image;
+          // document.getElementById('bike-model').innerHTML = `${selectedBike.model.split(' ')[0]}<br>${selectedBike.model.split(' ')[1]}`;
+          document.getElementById("bike-model").textContent =
+            selectedBike.model.split(" ")[0];
+          document.getElementById("bike-model-number").textContent =
+            selectedBike.model.split(" ")[1];
+          document.getElementById("bike-year").textContent = selectedBike.year;
+          document.getElementById("power-val").textContent = selectedBike.power;
+          document.getElementById("displacement-val").textContent =
+            selectedBike.displacement;
+          document.getElementById("speed-val").textContent = selectedBike.speed;
+          document.getElementById("weight-val").textContent =
+            selectedBike.weight;
+          document.getElementById("torque-val").textContent =
+            selectedBike.torque;
+
+          document
+            .querySelector(".bike-display")
+            .scrollIntoView({ behavior: "smooth" });
+        } else {
+          console.log("No bike found for:", brand, category);
+          document.getElementById("bike-model").textContent =
+            "No models available in this category";
+        }
+      }
+
+      document.querySelectorAll("#button button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const variation = button.getAttribute("variation");
+          const selectedBrand =
+            document.getElementById("selected-brand").innerText;
+          updateBikeDetails(`${variation}_${selectedBrand}`);
+        });
+        
+      });
+
+      function updateBikeDetails(selectedName) {
+        const [category, ...brandParts] = selectedName.split("_");
+        const brand = brandParts.join("_");
+
+        const selectedCategory = bikeData.find(
+          (bike) => bike.brand === brand && bike.category === category
+        );
+
+        if (selectedCategory && selectedCategory.variants.length > 0) {
+          const variantButtonsContainer =
+            document.getElementById("variant-buttons");
+          variantButtonsContainer.innerHTML = "";
+
+          selectedCategory.variants.forEach((variant, index) => {
+            const button = document.createElement("button");
+            button.className =
+              "variant-button" + (index === 0 ? " active" : "");
+            button.textContent = variant.model;
+            button.addEventListener("click", () => {
+              document
+                .querySelectorAll(".variant-button")
+                .forEach((btn) => btn.classList.remove("active"));
+              button.classList.add("active");
+              updateBikeSpecs(variant);
+            });
+            variantButtonsContainer.appendChild(button);
+          });
+
+          updateBikeSpecs(selectedCategory.variants[0]);
+        } else {
+          console.log("No bikes found for:", brand, category);
+          document.getElementById("variant-buttons").innerHTML = "";
+          document.getElementById("bike-model").textContent =
+            "No models available in this category";
+        }
+      }
+
+      function updateBikeSpecs(bike) {
+        document.getElementById("bike-image").src = bike.image;
+        document.getElementById("bike-model").textContent = bike.model;
+        document.getElementById("bike-year").textContent = bike.year;
+        document.getElementById("power-val").textContent = bike.power;
+        document.getElementById("displacement-val").textContent =
+          bike.displacement;
+        document.getElementById("speed-val").textContent = bike.speed;
+        document.getElementById("weight-val").textContent = bike.weight;
+        document.getElementById("torque-val").textContent = bike.torque;
+      }
+
+      document.querySelectorAll("#button button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const variation = button.getAttribute("variation");
+          const selectedBrand =
+            document.getElementById("selected-brand").innerText;
+          updateBikeDetails(`${variation}_${selectedBrand}`);
+        });
+        document
+            .getElementById("product-image")
+            .scrollIntoView({ behavior: "smooth" });
+        
+      });
+    </script>
+  </body>
+</html>
